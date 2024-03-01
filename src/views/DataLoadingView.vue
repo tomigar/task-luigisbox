@@ -1,7 +1,9 @@
 <template>
-    <div>Data</div>
+    <section class="container">
+        <Products />
+    </section>
 </template>
 
-<script setup lang="ts"></script>
-
-<style scoped></style>
+<script setup lang="ts">
+import Products from "@/components/Products/index.vue";
+</script>

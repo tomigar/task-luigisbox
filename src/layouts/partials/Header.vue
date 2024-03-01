@@ -35,7 +35,7 @@ interface HeaderItem {
 const items = ref([
     {
         label: "Data",
-        route: "data-loading",
+        route: "/data-loading",
     },
     {
         label: "Grid",
