@@ -25,4 +25,7 @@ defineProps({
     height: 200px;
     object-fit: contain;
 }
+.card {
+    height: 400px;
+}
 </style>
