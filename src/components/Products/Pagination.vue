@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-const emit = defineEmits(["pagechanged"]);
+const emit = defineEmits(["pageChanged"]);
 const props = defineProps({
     maxVisibleButtons: {
         type: Number,
@@ -93,11 +93,11 @@ const pages = computed(() => {
     return range;
 });
 
-const firstPage = () => emit("pagechanged", 1);
-const previousPage = () => emit("pagechanged", props.currentPage - 1);
-const setPage = (page: number) => emit("pagechanged", page);
-const nextPage = () => emit("pagechanged", props.currentPage + 1);
-const lastPage = () => emit("pagechanged", props.totalPages);
+const firstPage = () => emit("pageChanged", 1);
+const previousPage = () => emit("pageChanged", props.currentPage - 1);
+const setPage = (page: number) => emit("pageChanged", page);
+const nextPage = () => emit("pageChanged", props.currentPage + 1);
+const lastPage = () => emit("pageChanged", props.totalPages);
 const isPageActive = (page: number) => {
     return props.currentPage === page;
 };
