@@ -72,7 +72,6 @@ const startPage = computed(() => {
     return 1;
 });
 
-// Compute the pages range
 const pages = computed(() => {
     const range = [];
 
