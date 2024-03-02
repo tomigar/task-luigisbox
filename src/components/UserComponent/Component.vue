@@ -10,23 +10,23 @@
     </div>
     <button @click="draw">Draw</button>
     <XTemplate>
-        <div :style="{ border: inputData ? '0px' : '0px' }">
-            <component :is="component"></component></div
-    ></XTemplate>
+        <component :is="component" :key="key"></component>
+    </XTemplate>
 </template>
 
 <script setup>
-import { nextTick, onMounted, ref, watch } from "vue";
-import { createApp, defineComponent } from "vue/dist/vue.esm-bundler.js";
+import { DefineComponent, Ref, ref } from "vue";
+/* @ts-ignore */
+import { defineComponent } from "vue/dist/vue.esm-bundler.js";
 
-const htmlContent = ref("");
-const data = ref("{}");
+const htmlContent: Ref<string> = ref("");
+const data: Ref<string> = ref("{}");
 
-let component = defineComponent({
+let component: DefineComponent = defineComponent({
     template: "<template><h1>hi</h1></template>",
 });
 
-const inputData = ref(false);
+const key: Ref<number> = ref(0);
 
 const draw = () => {
     component = defineComponent({
@@ -34,6 +34,6 @@ const draw = () => {
         data: () => JSON.parse(data.value),
     });
 
-    inputData.value = !inputData.value;
+    key.value++;
 };
 </script>

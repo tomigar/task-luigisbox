@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import Grid from "@/components/Grid/index.vue";
 </script>
 

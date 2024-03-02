@@ -4,6 +4,6 @@
     </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import Products from "@/components/Products/index.vue";
 </script>

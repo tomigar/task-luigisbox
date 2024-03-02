@@ -31,9 +31,13 @@ export default function useAPI() {
     };
 
     const itemsLength = async (): Promise<number> => {
-        const response = await fetch("/data.json");
-        const data: ProductType[] = await response.json();
-        return data.length;
+        try {
+            const response = await fetch("/data.json");
+            const data: ProductType[] = await response.json();
+            return data.length;
+        } catch (error) {
+            throw error;
+        }
     };
 
     return { get, itemsLength };

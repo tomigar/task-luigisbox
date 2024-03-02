@@ -14,7 +14,7 @@
             :current-page="page"
             :perPage="maxItems"
             :totalPages="totalItems / maxItems"
-            @pagechanged="(p) => onPageChange(p)"
+            @pageChanged="(p) => onPageChange(p)"
             class="col-4"
         />
         <div class="col-2">
@@ -37,7 +37,7 @@ import Pagination from "@/components/Products/Pagination.vue";
 import MaxItemsSelector from "@/components/Products/MaxItemsSelector.vue";
 
 const { get, itemsLength } = useAPI();
-const items = ref<ProductType[]>([]);
+const items: Ref<ProductType[]> = ref([]);
 const maxItems: Ref<number> = ref(5);
 const page: Ref<number> = ref(1);
 const totalItems: Ref<number> = ref(0);
