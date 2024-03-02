@@ -3,6 +3,7 @@ import DataLoadingView from "@/views/DataLoadingView.vue";
 import GridView from "@/views/GridView.vue";
 import MainLayout from "@/layouts/MainLayout.vue";
 import type { Component } from "vue";
+import UserComponent from "@/views/UserComponent.vue";
 
 interface Route {
     path: string;
@@ -17,6 +18,7 @@ const routes: Route[] = [
         children: [
             { path: "/data-loading", component: DataLoadingView },
             { path: "/grid", component: GridView },
+            { path: "/user-component", component: UserComponent },
         ],
     },
 ];

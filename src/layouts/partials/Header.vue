@@ -23,7 +23,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from "vue";
+import { Ref, ref } from "vue";
 import { RouterLink } from "vue-router";
 
 const selected = ref(window.location.pathname);
@@ -32,7 +32,7 @@ interface HeaderItem {
     label: string;
     route: string;
 }
-const items = ref([
+const items: Ref<HeaderItem[]> = ref([
     {
         label: "Data",
         route: "/data-loading",
@@ -41,7 +41,11 @@ const items = ref([
         label: "Grid",
         route: "/grid",
     },
-] as HeaderItem[]);
+    {
+        label: "User Component",
+        route: "/user-component",
+    },
+]);
 </script>
 
 <style scoped>

@@ -1,5 +1,7 @@
 <template>
-    <div><Grid /></div>
+    <div>
+        <Grid />
+    </div>
 </template>
 
 <script setup lang="ts">

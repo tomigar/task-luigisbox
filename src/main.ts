@@ -5,5 +5,10 @@ import router from "@/router/index";
 import "bootstrap/dist/css/bootstrap.min.css";
 //import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap";
+const app = createApp(App);
 
-createApp(App).use(router).mount("#app");
+app.component("XTemplate", {
+    template: "#x-template",
+});
+app.use(router);
+app.mount("#app");
