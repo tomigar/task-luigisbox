@@ -45,10 +45,6 @@ const props = defineProps({
         type: Number,
         required: true,
     },
-    perPage: {
-        type: Number,
-        required: true,
-    },
     currentPage: {
         type: Number,
         required: true,
@@ -56,20 +52,24 @@ const props = defineProps({
 });
 
 const startPage = computed(() => {
-    if (props.currentPage === props.totalPages) {
-        const start = props.totalPages - (props.maxVisibleButtons - 1);
-
-        if (start === 0) {
-            return 1;
-        } else {
-            return start;
-        }
-    }
-
-    if (props.currentPage === 1) {
+    if (props.totalPages <= props.maxVisibleButtons) {
         return 1;
     }
-    return 1;
+
+    const halfVisibleButtons = Math.floor(props.maxVisibleButtons / 2);
+    let start = props.currentPage - halfVisibleButtons;
+
+    if (start < 1) {
+        start = 1;
+    }
+
+    const end = start + props.maxVisibleButtons - 1;
+
+    if (end > props.totalPages) {
+        start -= end - props.totalPages;
+    }
+
+    return start;
 });
 
 const pages = computed(() => {
@@ -94,14 +94,17 @@ const pages = computed(() => {
 });
 
 const firstPage = () => emit("pageChanged", 1);
-const previousPage = () => emit("pageChanged", props.currentPage - 1);
+const previousPage = () =>
+    emit("pageChanged", Math.max(props.currentPage - 1, 1));
 const setPage = (page: number) => emit("pageChanged", page);
-const nextPage = () => emit("pageChanged", props.currentPage + 1);
+const nextPage = () =>
+    emit("pageChanged", Math.min(props.currentPage + 1, props.totalPages));
 const lastPage = () => emit("pageChanged", props.totalPages);
 const isPageActive = (page: number) => {
     return props.currentPage === page;
 };
 </script>
+
 <style scoped>
 .pagination {
     list-style-type: none;

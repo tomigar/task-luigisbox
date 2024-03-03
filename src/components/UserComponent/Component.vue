@@ -14,7 +14,7 @@
     </XTemplate>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { DefineComponent, Ref, ref } from "vue";
 /* @ts-ignore */
 import { defineComponent } from "vue/dist/vue.esm-bundler.js";

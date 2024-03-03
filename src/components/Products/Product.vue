@@ -28,4 +28,7 @@ defineProps({
 .card {
     height: 400px;
 }
+.card-body {
+    margin-top: 20px;
+}
 </style>

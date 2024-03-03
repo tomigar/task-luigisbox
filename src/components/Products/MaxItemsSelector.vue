@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown">
         <button
-            class="btn btn-secondary dropdown-toggle"
+            class="btn btn-primary dropdown-toggle"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -10,7 +10,11 @@
         </button>
         <ul class="dropdown-menu">
             <li v-for="item in items" :key="item">
-                <a class="dropdown-item" @click="$emit('onChange', item)">
+                <a
+                    class="dropdown-item"
+                    @click="$emit('onChange', item)"
+                    :class="{ active: item === props.maxItems }"
+                >
                     {{ item }}
                 </a>
             </li>

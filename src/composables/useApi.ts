@@ -1,4 +1,5 @@
 import { ProductType } from "@/types/Product";
+import { ref } from "vue";
 
 export default function useAPI() {
     const get = async ({
@@ -9,18 +10,20 @@ export default function useAPI() {
         page: number;
         size: number;
         error?: boolean;
-    }): Promise<ProductType[]> => {
+    }): Promise<{ items: ProductType[]; maxPages: number }> => {
         try {
             await delay(500);
             if (error) throw new Error("404 Not Found");
 
             const response = await fetch("/data.json");
             const data: ProductType[] = await response.json();
+            const maxPages = ref(Math.ceil(data.length / size));
 
             const start = (page - 1) * size;
             const end = start + size;
             const paginatedData = data.slice(start, end);
-            return paginatedData;
+
+            return { items: paginatedData, maxPages: maxPages.value };
         } catch (error) {
             throw error;
         }
@@ -30,15 +33,5 @@ export default function useAPI() {
         return new Promise((resolve) => setTimeout(resolve, ms));
     };
 
-    const itemsLength = async (): Promise<number> => {
-        try {
-            const response = await fetch("/data.json");
-            const data: ProductType[] = await response.json();
-            return data.length;
-        } catch (error) {
-            throw error;
-        }
-    };
-
-    return { get, itemsLength };
+    return { get };
 }
