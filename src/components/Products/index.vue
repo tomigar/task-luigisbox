@@ -9,15 +9,14 @@
             <Product :product="item" />
         </div>
     </div>
-    <div v-if="items.length" class="row justify-content-between mt-4">
+    <div v-if="items.length" class="d-flex justify-content-between mt-4">
         <Pagination
             :current-page="page"
             :perPage="maxItems"
             :totalPages="maxPages"
             @pageChanged="(p) => onPageChange(p)"
-            class="col-4"
         />
-        <div class="col-2">
+        <div>
             <MaxItemsSelector
                 :maxItems="maxItems"
                 @onChange="(val: number) => onMaxItemsChange(val)"

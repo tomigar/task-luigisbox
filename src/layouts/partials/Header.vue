@@ -2,22 +2,20 @@
     <div>
         <header>
             <nav>
-                <ul>
-                    <li v-for="item in items">
-                        <RouterLink
-                            :to="(item.route as string)"
-                            class=""
-                            :class="{
-                                selected: selected === item.route,
-                            }"
-                            @click="selected = item.route"
-                        >
-                            <span>
-                                {{ item.label }}
-                            </span>
-                        </RouterLink>
-                    </li>
-                </ul>
+                <div v-for="item in items">
+                    <RouterLink
+                        :to="(item.route as string)"
+                        class=""
+                        :class="{
+                            selected: selected === item.route,
+                        }"
+                        @click="selected = item.route"
+                    >
+                        <span>
+                            {{ item.label }}
+                        </span>
+                    </RouterLink>
+                </div>
             </nav>
         </header>
     </div>
@@ -50,29 +48,30 @@ const items: Ref<HeaderItem[]> = ref([
 
 <style scoped>
 header {
-    padding: 1rem;
-}
-
-nav ul {
+    background-color: var(--primary-color);
+    margin-bottom: 50px;
     display: flex;
-    gap: 1rem;
     justify-content: center;
+    align-items: center;
 }
 
-nav ul li {
-    list-style: none;
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70px;
 }
 a {
     text-decoration: none;
+    font-size: larger;
     color: #000;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
+    padding: 10px 20px;
     transition: all 0.3s;
-    background-color: gray;
 }
-.selected {
+a.selected {
     color: white;
-    background-color: rgba(128, 128, 128, 0.518);
+    border-bottom: 2px solid white;
     transition: all 0.3s;
 }
 </style>

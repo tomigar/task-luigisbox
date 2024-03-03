@@ -1,6 +1,9 @@
 <template>
-    <div class="card" aria-hidden="true">
-        <div class="placeholder" style="height: 200px" />
+    <div class="card p-0" aria-hidden="true">
+        <div
+            class="placeholder rounded-top"
+            style="height: 200px; width: 100%"
+        />
         <div class="card-body">
             <h5 class="card-title placeholder-glow">
                 <span class="placeholder col-6"></span>
