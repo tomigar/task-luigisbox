@@ -4,5 +4,5 @@
     </div>
 </template>
 <script setup>
-import UserComponent from "@/components/UserComponent/Component.vue";
+import UserComponent from "@/components/UserComponent.vue";
 </script>

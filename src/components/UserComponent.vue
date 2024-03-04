@@ -1,17 +1,23 @@
 <template>
-    <div>
-        <textarea
-            v-model="htmlContent"
-            style="height: 300px; width: 300px; margin-right: 50px"
-        >
-        </textarea>
-        <textarea v-model="data" style="height: 300px; width: 300px">
-        </textarea>
+    <div class="d-flex gap-4">
+        <div>
+            <h3>template:</h3>
+            <textarea v-model="htmlContent" style="height: 300px; width: 300px">
+            </textarea>
+        </div>
+        <div>
+            <h3>data:</h3>
+            <textarea v-model="data" style="height: 300px; width: 300px">
+            </textarea>
+        </div>
+        <div>
+            <h3>result:</h3>
+            <XTemplate>
+                <component :is="component" :key="key"></component>
+            </XTemplate>
+        </div>
     </div>
-    <button @click="draw">Draw</button>
-    <XTemplate>
-        <component :is="component" :key="key"></component>
-    </XTemplate>
+    <button class="" @click="draw">Draw</button>
 </template>
 
 <script setup lang="ts">
